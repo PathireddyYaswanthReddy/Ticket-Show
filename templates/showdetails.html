@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel = "stylesheet" href = "/static/userhomepage.css">
+        <link rel = "stylesheet" href = "userhomepage.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            <div class = "navibar">
+                <a href = "/admin/{{email}}/home"><button class = "logo" style="outline: none;"><i class="bi bi-camera-reels"></i>SHOWTIME</button></a>
+            </div>
+            <div class = "minibar">
+                <p style = "color:white; font-family: 'Roboto'; font-size:20px; font-weight: 400; margin-left: 9rem; margin-top :1rem">Venue id : {{venueid}}</p>
+                <p style = "color:white; font-family: 'Roboto'; font-size:20px; font-weight: 400; margin-top :1rem; margin-left: 10px;">Venue name : {{venues.venue_name}}</p>
+            </div>
+            <div class = "text-center row" style="margin-right: 0px !important; margin-left: 0px !important; max-width: 100% !important;">
+                    <div class = "col-md-2" style="max-width: 9.5%;">
+                    </div>
+                    <div class = "col-md-10" style="max-width: 80.5%;">
+                        {% if i == 'alert' %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert" style = "height:70px">
+                            <strong>Cannot delete show, tickets for this show have been booked</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">X</span>
+                            </button>
+                          </div>
+                        {% endif %}
+                        {% if i == 'success' %}
+                          <div class="alert alert-warning alert-dismissible fade show" role="alert" style = "height:70px">
+                            <strong>Are you sure you want to delete this show</strong>
+                            <a href="/admin/{{email}}/{{venueid}}/{{showid}}/deleteshow" class="alert-link">Yes</a>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">X</span>
+                            </button>
+                          </div>
+                        {% endif %}
+                        {% if i == 'confirmed' %}
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" style = "height:70px">
+                            <strong>Show deleted successfully</strong>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">X</span>
+                            </button>
+                        </div>
+                        {% endif %}
+                        {% if shows | length == 0 %}
+                            <br>
+                            <p style = "color: #1A6B6B; font-size: 20px; font-weight: bold; font-family: 'Roboto';">No shows created.</p>
+                        {% else %}
+                        {% for i in shows %}
+                        <div class="card mb-3" style="margin-top: 15px; border-radius: 10px; border-color: #1A6B6B; border-width: 2px;">
+                            <div class="card-body">
+                              <h5 class="card-title" style = " color:#1A6B6B;font-family: 'Roboto'; font-weight:600; font-size: 30px;">{{ i.show_name}}</h5>
+                              <br>
+                              <span class="card-text" style="margin-left: 0rem; color: #1A6B6B; font-family: 'Roboto'; font-weight:600;">Capacity : {{i.capacity}}</span>
+                              <span class="card-text" style="margin-left: 0.9rem; color: #1A6B6B; font-family: 'Roboto'; font-weight:600;">Number of tickets booked : {{i.booked_seats}}</span>
+                              <span class="card-text" style="margin-left: 0.9rem; color: #1A6B6B; font-family: 'Roboto'; font-weight:600;">Film certificate : {{i.film_certificate}}</span>
+                              <span class ="card-text" style="margin-left: 0.9rem; color: #1A6B6B; font-family: 'Roboto'; font-weight:600;">Genre : {{i.genre}}</span>
+                              <span class="card-text" style="margin-left: 0.9rem; color: #1A6B6B; font-family: 'Roboto'; font-weight:600;">Language : {{i.language}}</span>
+                              <span class="card-text" style="margin-left: 0.9rem; color: #1A6B6B; font-family: 'Roboto'; font-weight:600;">Format : {{i.format}}</span>
+                              {% set count = namespace(value = 0) %}
+                              {% set sum = namespace(value = 0) %}
+                              {% for j in ratings %}
+                              {% if j.show_id == i.show_id and j.rating != None  %}
+                                {% set sum.value = sum.value + j.rating %}
+                                {% set count.value = count.value + 1 %}
+                              {% endif %}
+                              {% endfor %}
+                              {% if count.value > 0 %}
+                              <span class="card-text" style="margin-left: 0.9rem; color: #1A6B6B; font-family: 'Roboto'; font-weight:600;">Rating : <i class="bi bi-star-fill"></i> {{sum.value/count.value}} / 10</span>
+                              {% else %}
+                              <span class="card-text" style="margin-left: 0.9rem; color: #1A6B6B; font-family: 'Roboto'; font-weight:600;">Rating : <i class="bi bi-star-fill"></i> {{'-'}} / 10</span>
+                              {% endif %}
+                              <br><br>
+                              {% if i.date >= d1 and i.time > t1 %}
+                              <a href="/admin/{{email}}/{{venueid}}/{{i.show_id}}/updateshow"><button class = "test" style = "width: 100px; font-weight: 600;">Update</button></a>
+                              <a href="/admin/{{email}}/{{venueid}}/{{i.show_id}}/deleteconfirm"><button class = "test" style = "width: 100px; font-weight: 600;" name = {{i.show_id}}>Delete</button></a>
+                              {% endif %}
+                            </div>
+                          </div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
+                    <div class = "col-md-2" style="max-width: 10%;">
+                    </div>
+            </div>
+        </div>
+    </body>
+</html>

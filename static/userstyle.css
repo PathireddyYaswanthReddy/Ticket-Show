@@ -1,0 +1,67 @@
+.hed1
+{
+    color: #1A6B6B;
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 5.5rem;
+}
+.hed3{
+    color: #1A6B6B;
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 3rem;
+}
+.cont {
+    width: 450px;
+    height: 480px;
+    background: white;
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1rem;
+} 
+.inpu input{
+    width: 100%;
+    height: 50px;
+    padding-left: 9px;
+    outline: none;
+    border: 2px solid #1A6B6B;
+    border-radius: 6px;
+}
+
+label
+{
+font-family: 'Roboto';
+font-size: 15;
+color: #1A6B6B;
+}
+button {
+    font-family: 'Roboto';
+    height: 50px;
+    background: #1A6B6B;
+    outline: none;
+    border: none;
+    color: white;
+    font-weight: bolder;
+}
+a
+{
+    color: #1A6B6B !important;
+}
+[class*=" bi-"]::before {
+    display: inline-block;
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    line-height: unset !important; 
+    text-transform: none !important;
+    vertical-align: unset !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  

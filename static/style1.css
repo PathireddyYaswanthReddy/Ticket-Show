@@ -1,0 +1,152 @@
+[class*=" bi-"]::before {
+  display: inline-block;
+  font-family: bootstrap-icons !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  vertical-align: unset;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.reg1{
+    color: #1A6B6B;
+    background-color: white;
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+    font-weight: bolder;
+    margin: 0 10px;
+    width: 100px;
+    padding: 0.75rem 0.375rem;
+    transition: 0.2s;
+    outline: none;
+  }
+.reg2{
+    color: white;
+    background-color: #1a6b6b;
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+    font-weight: bolder;
+    margin: 0 10px;
+    width: 100px;
+    padding: 0.75rem 0.375rem;
+    transition: 0.2s;
+    outline: none;
+  }
+  button:focus{
+    outline:none;
+  }
+.child1{
+    height: 100px;
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    margin: -50px 0 0 -180px;
+  }
+  .child2{
+    height: 100px;
+    position: absolute;
+    top: 40%;
+    left : 45%;
+    margin: -50px 0 0 -50px;
+  }
+#x
+{
+    background-color: #1A6B6B;
+    width: 50%;
+    float :left;
+    position: relative;
+}
+#y
+{
+    background-color: white;
+    width :50%;
+    float: right;
+    position: relative;
+}
+#head1
+{
+    text-align: center;
+    color : white;
+    font-family: 'Roboto';
+    font-size: 50;
+}
+#head2
+{
+    text-align: center;
+    color : #1A6B6B;
+    font-family: 'Roboto';
+    font-size: 50;
+}
+div{
+    height :100%;
+}
+#b1
+{
+    background-color : #ffffff;
+    border-color: #1a6b6b;
+    color: #1A6B6B;
+    font-family: 'Roboto';
+    font-weight: bolder;
+}
+#b2
+{
+    background-color : #1A6B6B;
+    border-color: white;
+    color: white;
+    font-family: 'Roboto';
+    font-weight: bolder;
+}
+#rm1
+{
+  font-family: 'Roboto';
+  font-size: 100;
+  color: white;
+  margin-left: 366;
+}
+#rm3
+{
+  font-size: 100;
+  color: white;
+  margin-left: 555;
+}
+#rm2
+{
+  font-family: 'Roboto';
+  font-size :100;
+  color: #1A6B6B;
+}
+#rm4
+{
+  font-size: 90;
+  color: #1A6B6B;
+  margin-left: 80;
+}
+.sty
+{
+    height: 40px;
+    border-radius: 4px;
+    font-size : 1.4rem;
+    position: relative;
+    width: 250px;
+    border-color: #1a6b6b;
+    outline:none
+}
+/* a 
+{
+    /* text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+} */
+/* .vl {
+    border-left: 3px solid #ffffff;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    top: 200;
+}*/

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel = "stylesheet" href = "/static/usersign.css">
+        <link rel = "stylesheet" href = "usersign.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <form action = "/admin/{{email}}/{{venueid}}/updatevenue" method = "POST">
+        <div>
+            <h1 class = "hed1" style="font-weight: 600;">Update venue details</h1>
+                <div class="cont1">
+                    <div class="inpu">
+                        <div class="empas">
+                            <label>Venue id</label>
+                            <input type="text" name="venueid" value = "{{ venues.venue_id }}" disabled>   
+                        </div>
+                        <br>
+                        <div class="empas">
+                            <label>Venue name</label>
+                            <input type="text" name="venuename" placeholder="Venue name" required>   
+                        </div>
+                        <br>
+                        <div class="empas">
+                            <label>Location</label>
+                            <input type="text" name="location" value = "{{ venues.location }}" disabled>   
+                        </div>
+                        <br>
+                        <div class="empas">
+                            <label>Address</label>
+                            <input type="text" name="address" value = "{{ venues.address }}" disabled>   
+                        </div>
+                        <div class="empas">
+                            <br>
+                            <label>City</label>
+                            <input type="text" name="city" value = "{{ venues.city }}" disabled>
+                        </div>
+                        <div class="empas">
+                            <br>
+                            <label>State</label>
+                            <input type="text" name="state" value = "{{ venues.state }}" disabled>
+                        </div>
+                        <br>
+                    </div>
+                    {% if i == 1 %}
+                    <p style="color:red; font-family: 'Roboto';">Venue already exists.</p>
+                    {% endif %}
+                    <button style = "border-radius:30px;outline: none;">Update venue</button>
+                </div>
+        </div>
+        </form>
+    </body>
+</html>

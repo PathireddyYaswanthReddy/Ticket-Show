@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <link rel = "stylesheet" href = "/static/userhomepage.css">
+        <link rel = "stylesheet" href = "userhomepage.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet"> -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            <div class = "navibar">
+                <a href = "/user/{{email}}/home"><button class = "logo" style="outline: none;"><i class="bi bi-camera-reels"></i>SHOWTIME</button></a>
+            </div>
+        <div class = "movietitlebar">
+            <div style = "margin-left: 9rem;"><h1 style="color:white">{{showname}}</h1>
+            <span style = "color:white">{{shows1.film_certificate}}</span><span style="color:white"> {{shows1.genre}}</span>
+            </div>
+        </div>
+        <div class = "filter">
+            <form method = "POST" name = "filterform">
+            {% if set == 1 %}
+                {% if date != '' %}
+                <select name = "selectdate" style = "outline: none; margin-left: 9rem; width: 11.8rem;">
+                    {% if showdate != '' %}
+                    <option value = "{{showdate}}" selected = "selected">{{showdate[8:] + '-' + showdate[5:7] + '-' + showdate[:4] + ' ' + day[showdate]}}</option>
+                    {% else %}
+                    <option value = "" selected = "selected" hidden = "hidden">Filter Show Date</option>
+                    {% endif %}
+                    {% for k in date1 %}
+                    <option  value = "{{k}}">{{k[8:] + '-' + k[5:7] + '-' + k[:4] + ' ' + day1[k]}}</option>
+                    {% endfor %}
+                </select>
+                {% else %}
+                <select name = "selectdate" style = "outline: none; margin-left: 9rem; width: 11.8rem;">
+                    <option value = "" selected = "selected" hidden = "hidden">Filter Show Date</option>
+                    {% for k in date %}
+                    <option value="{{k}}">{{k[8:] + '-' + k[5:7] + '-' + k[:4] + ' ' + day[k]}}</option>
+                    {% endfor %}
+                </select>
+                {% endif %}
+                {% if langu != '' %}
+                <select name = "selectlanguage" style = "outline: none; margin-left: 1rem; width: 7.8rem;">
+                    <option value = "{{langu}}" selected = "selected">{{langu}}</option>
+                    {% for i in lang1 %}
+                    <option value="{{i}}">{{i}}</option>
+                    {% endfor %}
+                </select>
+                {% else %}
+                <select name = "selectlanguage" style = "outline: none; margin-left: 1rem; width: 7.8rem;">
+                    <option value = "" selected = "selected" hidden = "hidden">Filter Laguage</option>
+                    {% for i in lang%}
+                    <option value="{{i}}">{{i}}</option>
+                    {% endfor %}
+                </select>
+                {% endif %}
+                {% if format1 != '' %}
+                <select name = "selectformat" style = "outline: none; margin-left: 1rem; width: 7.15rem;">
+                    <option value = "{{format1}}" selected = "selected">{{format1}}</option>
+                    {% for j in movieformat1 %}
+                    <option value="{{j}}">{{j}}</option>
+                    {% endfor %}
+                </select>
+                {% else %}
+                <select name = "selectformat" style = "outline: none; margin-left: 1rem; width: 7.15rem;">
+                    <option value = "" selected = "selected" hidden = "hidden">Filter Format</option>
+                    {% for j in movieformat %}
+                    <option value="{{j}}">{{j}}</option>
+                    {% endfor %}
+                </select>
+                {% endif %}
+                {% if time != '' %}
+                <select name = "selecttime" style = "outline: none; margin-left: 1rem; width: 14.27rem;">
+                    <option value = "{{time}}" selected = "selected">{{time}}</option>
+                    {% if time != 'Morning (12:00 - 11:59 AM)' %}
+                    <option value="Morning (12:00 - 11:59 AM)">Morning (12:00 - 11:59 AM)</option>
+                    {% endif %}
+                    {% if time != 'Afternoon (12:00 - 3:59 PM)' %}
+                    <option value="Afternoon (12:00 - 3:59 PM)">Afternoon (12:00 - 3:59 PM)</option>
+                    {% endif %}
+                    {% if time != 'Evening (4:00 - 6:59 PM)' %}
+                    <option value="Evening (4:00 - 6:59 PM)">Evening (4:00 - 6:59 PM)</option>
+                    {% endif %}
+                    {% if time != 'Night (7:00 - 11:59 PM)' %}
+                    <option value="Night (7:00 - 11:59 PM)">Night (7:00 - 11:59 PM)</option>
+                    {% endif %}
+                </select>
+                {% else %}
+                <select name = "selecttime" style = "outline: none; margin-left: 1rem; width: 14.27rem;">
+                    <option value = "" selected = "selected" hidden = "hidden">Filter Show Timings</option>
+                    <option value="Morning (12:00 - 11:59 AM)">Morning (12:00 - 11:59 AM)</option>
+                    <option value="Afternoon (12:00 - 3:59 PM)">Afternoon (12:00 - 3:59 PM)</option>
+                    <option value="Evening (4:00 - 6:59 PM)">Evening (4:00 - 6:59 PM)</option>
+                    <option value="Night (7:00 - 11:59 PM)">Night (7:00 - 11:59 PM)</option>
+                </select>
+                {% endif %}
+            {% else %}
+            <select name = "selectdate" style = "outline: none; margin-left: 9rem; width: 11.8rem;">
+                <option value = "" selected = "selected" hidden = "hidden">Filter Show Date</option>
+                {% for k in date %}
+                <option value="{{k}}">{{k[8:] + '-' + k[5:7] + '-' + k[:4] + ' ' + day[k]}}</option>
+                {% endfor %}
+            </select>
+            <select name = "selectlanguage" style = "outline: none; margin-left: 1rem; width: 7.8rem;">
+                <option value = "" selected = "selected" hidden = "hidden">Filter Laguage</option>
+                {% for i in lang %}
+                <option value="{{i}}">{{i}}</option>
+                {% endfor %}
+            </select>
+            <select name = "selectformat" style = "outline: none; margin-left: 1rem; width: 7.15rem;">
+                <option value = "" selected = "selected" hidden = "hidden">Filter Format</option>
+                {% for j in movieformat %}
+                <option value="{{j}}">{{j}}</option>
+                {% endfor %}
+            </select>
+            <select name = "selecttime" style = "outline: none; margin-left: 1rem; width: 14.27rem;">
+                <option value = "" selected = "selected" hidden = "hidden">Filter Show Timings</option>
+                <option value="Morning (12:00 - 11:59 AM)">Morning (12:00 - 11:59 AM)</option>
+                <option value="Afternoon (12:00 - 3:59 PM)">Afternoon (12:00 - 3:59 PM)</option>
+                <option value="Evening (4:00 - 6:59 PM)">Evening (4:00 - 6:59 PM)</option>
+                <option value="Night (7:00 - 11:59 PM)">Night (7:00 - 11:59 PM)</option>
+            </select>
+            {% endif %}
+            <a href = "/user/{{email}}/{{showname}}/{{location}}/bookshow"><button class = "test" name = "filter" style="width: 60px; margin-left: 1rem; background-color: white; color: #1A6B6B; font-weight: 600; padding: 0.2rem;">Filter</button></a>
+        </form>
+        <form action = "/user/{{email}}/{{showname}}/{{location}}/bookshow" method = "GET" name = "clearform">
+            <button class = "test" name = "filter" style="width: 60px; margin-left: 1rem; background-color: white; color: #1A6B6B; font-weight: 600; padding: 0.2rem;">Clear</button>
+        </form>
+        </div>
+        <div class = "text-center row" style="margin-right: 0px !important; margin-left: 0px !important; max-width: 100% !important;">
+            <div class = "col-md-2" style="max-width: 9.5%;">
+                <br>
+                <p style="margin-left: -30%;"><i class="bi bi-circle-fill" style = "color: #1A6B6B;"></i>  Available</p>
+                <p style="margin-left: -25%;"><i class="bi bi-circle-fill" style = "color: #FF6600;"></i>  Filling fast</p>
+                <p style="margin-left: -25%;"><i class="bi bi-circle-fill" style = "color: #ff1100;"></i>  House full</p>
+            </div>
+            <div class = "col-md-10" style="max-width: 80.5%;">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    {% if f == 1 and l | length > 0 %}
+                        {% for i in l %}
+                            {% if (i[1] > d1) or (d1 == i[1] and i[2] > t1) %}
+                            <div class="col" style="flex-grow: unset; margin-top: 15px;">
+                                <div class="card h-100" style= "width : 16rem; border-radius: 10px; border-color: #379393; border-width: 2px;">
+                                <div class="card-body">
+                                <h5 class="card-title" style="margin-top: 15px; color: #1A6B6B; font-size: 2rem;">{{ i[0] }}</h5>
+                                <br>
+                                    <p class="card-text" style = "color: #379393; font-family: 'Roboto'; font-weight: 600;"><span style = "font-family: 'Roboto'; font-weight: 600; color: #1A6B6B;">Location : </span>{{ i[3].title() }}</p>
+                                    <p class="card-text" style = "color: #379393; font-family: 'Roboto'; font-weight: 600;"><span style = "font-family: 'Roboto'; font-weight: 600; color: #1A6B6B;">Language : </span>{{ i[5] }}</p>
+                                    <p class="card-text" style = "color: #379393; font-family: 'Roboto'; font-weight: 600;"><span style = "font-family: 'Roboto'; font-weight: 600; color: #1A6B6B;">Format : </span>{{ i[4] }}</p>
+                                    <p class="card-text" style = "color: #379393; font-family: 'Roboto'; font-weight: 600;"><span style = "font-family: 'Roboto'; font-weight: 600; color: #1A6B6B;">Date : </span>{{ i[1][8:] + '-' + i[1][5:7] + '-' + i[1][:4] }}</p>
+                                    <p class="card-text" style = "color: #379393; font-family: 'Roboto'; font-weight: 600;"><span style = "font-family: 'Roboto'; font-weight: 600; color: #1A6B6B;">Time : </span>{{ i[2] }}</p>
+                                    {% if (i[-1]//2) >= (i[-1] - i[-2]) and i[-1] != i[-2]%}
+                                    <a href="/user/{{email}}/{{i[-3]}}/{{location}}/bookticket" ><button class = "test" style="width: 200px; background-color: #FF6600;">Book Ticket</button></a>
+                                    {% endif %}
+                                    {% if i[-2] == i[-1]%} 
+                                    <a href="/user/{{email}}/{{i[-3]}}/{{location}}/bookticket" ><button class = "test" style="width: 200px; background-color: #ff1100;" disabled>House Full</button></a> 
+                                    {% else %}  
+                                    <a href="/user/{{email}}/{{i[-3]}}/{{location}}/bookticket" ><button class = "test" style="width: 200px;">Book Ticket</button></a> 
+                                    {% endif %}
+                                </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                    {% if f == 0 %}
+                        {% if l | length > 0%}
+                        {% for i in l %}
+                        {% if (i[1] > d1)or (d1 == i[1] and i[2] > t1) %}
+                        <div class="col" style="flex-grow: unset; margin-top: 15px;">
+                            <div class="card h-100" style= "width : 16rem; border-radius: 10px; border-color: #379393; border-width: 2px;">
+                            <div class="card-body">
+                            <h5 class="card-title" style="margin-top: 15px; color: #1A6B6B; font-size: 2rem;">{{ i[0] }}</h5>
+                            <br>
+                                <p class="card-text" style = "color: #379393; font-family: 'Roboto'; font-weight: 600;"><span style = "font-family: 'Roboto'; font-weight: 600; color: #1A6B6B;">Location : </span>{{ i[3].title() }}</p>
+                                <p class="card-text" style = "color: #379393; font-family: 'Roboto'; font-weight: 600;"><span style = "font-family: 'Roboto'; font-weight: 600; color: #1A6B6B;">Language : </span>{{ i[5] }}</p>
+                                <p class="card-text" style = "color: #379393; font-family: 'Roboto'; font-weight: 600;"><span style = "font-family: 'Roboto'; font-weight: 600; color: #1A6B6B;">Format : </span>{{ i[4] }}</p>
+                                <p class="card-text" style = "color: #379393; font-family: 'Roboto'; font-weight: 600;"><span style = "font-family: 'Roboto'; font-weight: 600; color: #1A6B6B;">Date : </span>{{ i[1][8:] + '-' + i[1][5:7] + '-' + i[1][:4] }}</p>
+                                <p class="card-text" style = "color: #379393; font-family: 'Roboto'; font-weight: 600;"><span style = "font-family: 'Roboto'; font-weight: 600; color: #1A6B6B;">Time : </span>{{ i[2] }}</p>
+                                {% if (i[-1]//2) >= (i[-1] - i[-2]) and i[-1] != i[-2]%}
+                                <a href="/user/{{email}}/{{i[-3]}}/{{location}}/bookticket" ><button class = "test" style="width: 200px; background-color: #FF6600;">Book Ticket</button></a>
+                                {% elif i[-2] == i[-1]%} 
+                                <a href="/user/{{email}}/{{i[-3]}}/{{location}}/bookticket" ><button class = "test" style="width: 200px; background-color: #ff1100;" disabled>House Full</button></a> 
+                                {% else %}  
+                                <a href="/user/{{email}}/{{i[-3]}}/{{location}}/bookticket" ><button class = "test" style="width: 200px;">Book Ticket</button></a> 
+                                {% endif %}
+                            </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if f==0 and l | length == 0%}
+                        <p style = "text-align: center; font-family:'Roboto'; font-weight: bolder; font-size: 30px; margin-left: 21.2rem; margin-top: 2%;">No shows found for your search results.</p>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                </div>
+                {% if f==1 and l | length == 0 %}
+                <br>
+                <p style = "text-align: center; font-family:'Roboto'; font-weight: bolder; font-size: 30px;">No shows found for your search results.</p>
+                {% endif %}
+            </div>
+            <div class = "col-md-2" style="max-width: 10%;">
+            </div>
+    </div>
+        </div>
+    </body>
+</html>
