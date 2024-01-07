@@ -1,4 +1,4 @@
-# Ticket-Show
+## Show Time 🎥
 A multiuser platform(for admin and users) for booking movies/events tickets and for hosting events.
 
 Make sure to have python installed on your computer/device.
